@@ -542,22 +542,41 @@
       gsap.set(title, { y: 40 });
       tl.to(title, { clipPath: 'inset(0 0 0% 0)', opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, 0);
 
-      var wrapperWidth = wrapper.getBoundingClientRect().width;
-      var viewportWidth = window.innerWidth;
-      var startOffset = viewportWidth * 0.8;
-      var finalX = 0;
-      if (wrapperWidth > viewportWidth) finalX = -(wrapperWidth - viewportWidth) - 20;
-      gsap.set(wrapper, { x: startOffset });
-      tl.to(wrapper, { x: finalX, duration: 3.0, ease: 'power2.inOut' }, 0.15);
+     var wrapperWidth = wrapper.getBoundingClientRect().width;
+var viewportWidth = window.innerWidth;
 
-      trackBoxes.forEach(function (box, i) {
-        tl.to(box, { opacity: 1, duration: 0.8, ease: 'power2.out' }, 0.4 + i * 0.2);
-      });
+var isDesktop = viewportWidth >= 768;
 
-      tl.to(prizesWrap, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 3.0);
-      prizeBoxes.forEach(function (box, i) {
-        tl.to(box, { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.9, ease: 'power2.out' }, 3.2 + i * 0.25);
-      });
+/*
+ * DESKTOP:
+ * Two cards should already be centered.
+ *
+ * MOBILE:
+ * Keep the original horizontal entrance animation.
+ */
+var startOffset = isDesktop
+  ? 0
+  : viewportWidth * 0.8;
+
+var finalX = 0;
+
+if (!isDesktop && wrapperWidth > viewportWidth) {
+  finalX = -(wrapperWidth - viewportWidth) - 20;
+}
+
+gsap.set(wrapper, {
+  x: startOffset
+});
+
+tl.to(
+  wrapper,
+  {
+    x: finalX,
+    duration: isDesktop ? 1.2 : 3.0,
+    ease: 'power2.inOut'
+  },
+  0.15
+);
 
       tl.to(content, {
         y: function () {
