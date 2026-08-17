@@ -2833,3 +2833,161 @@ main{overflow:visible;}
     padding-bottom:.12em;
   }
 }
+
+/* =====================================================
+   TRACKS — FINAL REFERENCE SIZING / PRIZES VISIBILITY
+   ===================================================== */
+.tracks{
+  overflow:visible !important;
+  padding-bottom:2.5rem !important;
+}
+.tracks__content{
+  width:100%;
+}
+.tracks__title,
+.tracks__wrapper-outer,
+.tracks__prizes{
+  max-width:1400px !important;
+}
+.tracks__wrapper{
+  width:100% !important;
+  max-width:1400px;
+  gap:1rem !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+.tracks__card{
+  width:calc((100% - 1rem) / 2) !important;
+  max-width:none !important;
+  height:380px !important;
+  min-height:380px !important;
+}
+.tracks__card-inner{
+  height:380px !important;
+  min-height:380px !important;
+  padding:2rem !important;
+  border-radius:20px !important;
+}
+.tracks__card-top{
+  margin-bottom:.8rem;
+}
+.tracks__card-body{
+  flex:1 1 auto;
+  min-height:0;
+}
+.tracks__card-body h3{
+  font-size:clamp(1.8rem,2.35vw,2.5rem) !important;
+  line-height:1.12;
+  margin-bottom:.2rem;
+}
+.tracks__subtitle{
+  font-size:clamp(.95rem,1.15vw,1.08rem) !important;
+  line-height:1.35;
+}
+.tracks__desc{
+  font-size:clamp(.82rem,1vw,.95rem) !important;
+  line-height:1.48;
+  padding-top:.65rem;
+  margin-top:.15rem;
+}
+.tracks__card-footer{
+  margin-top:.65rem;
+  padding-top:.7rem;
+  font-size:clamp(.78rem,.95vw,.9rem) !important;
+  line-height:1.4;
+}
+.tracks__card-footer > span{
+  margin-bottom:.45rem;
+}
+.tracks__card-footer ul{
+  display:flex !important;
+  flex-direction:column !important;
+  grid-template-columns:none !important;
+  gap:.3rem !important;
+  margin-top:0 !important;
+}
+.tracks__card-footer li{
+  line-height:1.35;
+  padding-left:1rem;
+}
+
+.tracks__prizes{
+  margin-top:1rem !important;
+  padding-bottom:2rem !important;
+  opacity:0;
+}
+.tracks__prizes h3{
+  font-size:clamp(1.5rem,2.2vw,2rem) !important;
+  margin-bottom:.9rem !important;
+}
+.tracks__prizes-grid{
+  gap:.75rem !important;
+}
+.tracks__prize,
+.tracks__prize.is-winner{
+  min-height:118px !important;
+  height:118px !important;
+  padding:1rem 1.25rem !important;
+}
+.tracks__prize.is-winner{
+  min-height:128px !important;
+  height:128px !important;
+}
+.tracks__prize.is-winner h4{
+  font-size:clamp(1.25rem,1.8vw,1.7rem) !important;
+}
+.tracks__prize.is-winner .tracks__prize-amt{
+  font-size:clamp(1.05rem,1.5vw,1.35rem) !important;
+}
+.tracks__prize-amt{
+  font-size:clamp(.95rem,1.2vw,1.1rem) !important;
+}
+
+@media (max-width:1399px) and (min-width:768px){
+  .tracks__card,
+  .tracks__card-inner{
+    height:370px !important;
+    min-height:370px !important;
+  }
+}
+
+@media (max-width:767px){
+  .tracks{
+    height:auto !important;
+    min-height:100svh;
+    padding:2.5rem 1rem 2rem !important;
+  }
+  .tracks__title,
+  .tracks__wrapper-outer,
+  .tracks__prizes{
+    max-width:none !important;
+  }
+  .tracks__wrapper{
+    flex-direction:column !important;
+    gap:1rem !important;
+  }
+  .tracks__card{
+    width:100% !important;
+    height:390px !important;
+    min-height:390px !important;
+  }
+  .tracks__card-inner{
+    height:390px !important;
+    min-height:390px !important;
+    padding:1.4rem !important;
+  }
+  .tracks__card-body h3{
+    font-size:clamp(1.65rem,8vw,2.15rem) !important;
+  }
+  .tracks__desc{
+    font-size:.86rem !important;
+  }
+  .tracks__prizes-grid{
+    grid-template-columns:1fr !important;
+  }
+  .tracks__prize,
+  .tracks__prize.is-winner{
+    height:auto !important;
+    min-height:110px !important;
+  }
+}
