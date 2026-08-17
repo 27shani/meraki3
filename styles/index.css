@@ -349,7 +349,7 @@ main > section{ position:relative; }
 
 
 /* =====================================================
-   EXPANDED HERO — BASE
+   EXPANDED HERO — EXACT REFERENCE LAYOUT
    ===================================================== */
 
 .hero__expand{
@@ -369,22 +369,16 @@ main > section{ position:relative; }
 
   background:var(--ink);
 
-  box-shadow:
-    0 25px 80px rgba(0,0,0,.6);
+  box-shadow:0 25px 80px rgba(0,0,0,.6);
 
-  display:flex;
-
-  align-items:flex-start;
-  justify-content:flex-start;
-
-  text-align:left;
+  display:block;
 
   pointer-events:none;
 }
 
 
 /* =====================================================
-   EXPANDED HERO — BACKGROUND IMAGE
+   BACKGROUND
    ===================================================== */
 
 .hero__expand-bg{
@@ -398,15 +392,8 @@ main > section{ position:relative; }
 
   opacity:.3;
 
-  filter:
-    grayscale(1)
-    contrast(1.25);
+  filter:grayscale(1) contrast(1.25);
 }
-
-
-/* =====================================================
-   EXPANDED HERO — SHADE
-   ===================================================== */
 
 .hero__expand-shade{
   position:absolute;
@@ -420,11 +407,6 @@ main > section{ position:relative; }
       rgba(0,0,0,.8)
     );
 }
-
-
-/* =====================================================
-   EXPANDED HERO — COLOR TINT
-   ===================================================== */
 
 .hero__expand-tint{
   position:absolute;
@@ -443,8 +425,7 @@ main > section{ position:relative; }
 
 
 /* =====================================================
-   EXPANDED HERO — CONTENT
-   DESKTOP REFERENCE COMPOSITION
+   CONTENT
    ===================================================== */
 
 .hero__expand-content{
@@ -456,28 +437,9 @@ main > section{ position:relative; }
 
   max-width:none;
 
-  display:grid;
+  display:block;
 
-  /*
-   * LEFT:
-   * Heading
-   *
-   * RIGHT:
-   * Description
-   */
-  grid-template-columns:
-    minmax(300px,38%)
-    minmax(400px,1fr);
-
-  align-items:start;
-  justify-content:start;
-
-  column-gap:clamp(3rem,7vw,7rem);
-
-  padding:
-    clamp(5rem,9vh,7rem)
-    clamp(2rem,4.5vw,5rem)
-    4rem;
+  padding:0;
 
   opacity:0;
 
@@ -486,28 +448,37 @@ main > section{ position:relative; }
 
 
 /* =====================================================
-   EXPANDED HERO — HEADING
+   HEADING
    ===================================================== */
 
 .hero__expand-title{
-  align-self:start;
+  position:absolute;
+
+  /*
+   * Reference:
+   * approximately 5% from the left
+   * approximately 12% from the top
+   */
+  left:5%;
+  top:12%;
+
+  width:auto;
+  max-width:620px;
 
   margin:0;
   padding:0;
 
   font-family:var(--font-serif);
 
-  /*
-   * Normal first line.
-   * Gradient/italic treatment remains on
-   * the .grad element.
-   */
   font-style:normal;
   font-weight:400;
 
-  font-size:clamp(3rem,5.2vw,5.5rem);
+  /*
+   * Reference heading size.
+   */
+  font-size:clamp(3rem,4.4vw,4.6rem);
 
-  line-height:1.02;
+  line-height:1.08;
 
   letter-spacing:-.025em;
 
@@ -520,25 +491,30 @@ main > section{ position:relative; }
 
 
 /* =====================================================
-   EXPANDED HERO — DESCRIPTION
+   DESCRIPTION
    ===================================================== */
 
 .hero__expand-copy{
-  align-self:start;
+  position:absolute;
 
   /*
-   * Deliberately pushes the copy lower
-   * than the heading to match the reference.
+   * This is the most important positioning.
+   * The copy sits substantially lower and
+   * starts around one-third across the screen.
    */
-  margin-top:clamp(8rem,18vh,13rem);
+  left:33.5%;
+  top:44.5%;
 
-  width:100%;
-  max-width:40rem;
+  width:600px;
+  max-width:40vw;
+
+  margin:0;
+  padding:0;
 
   display:flex;
   flex-direction:column;
 
-  gap:1.5rem;
+  gap:1.35rem;
 
   font-size:clamp(1rem,1.35vw,1.2rem);
 
@@ -562,170 +538,147 @@ main > section{ position:relative; }
 
 
 /* =====================================================
-   DESKTOP — 768px+
+   DESKTOP
    ===================================================== */
 
 @media (min-width:768px){
 
-  .hero{
-    justify-content:space-between;
-  }
-
-  .hero__topbar{
-    padding:2.5rem 3rem 0;
-    align-items:center;
-  }
-
-  .hero__lede{
-    max-width:24rem;
-  }
-
-  .hero__brand-logo{
-    height:16px;
-  }
-
-  .hero__bottombar{
-    flex-direction:row;
-
-    justify-content:space-between;
-    align-items:center;
-
-    padding:
-      1.5rem
-      3rem
-      2.5rem;
-  }
-
-
-  /* ================================================
-     EXPANDED HERO — DESKTOP
-     ================================================ */
-
-  .hero__expand{
-    align-items:flex-start;
-    justify-content:flex-start;
-    text-align:left;
-  }
-
   .hero__expand-content{
+    display:block;
     width:100%;
     height:100%;
-    max-width:none;
-
-    display:grid;
-
-    grid-template-columns:
-      minmax(300px,38%)
-      minmax(400px,1fr);
-
-    align-items:start;
-    justify-content:start;
-
-    column-gap:clamp(3rem,7vw,7rem);
-
-    padding-left:
-      clamp(2rem,4.5vw,5rem);
-
-    padding-right:
-      clamp(2rem,4.5vw,5rem);
-
-    padding-top:
-      clamp(5rem,9vh,7rem);
   }
 
   .hero__expand-title{
-    font-size:
-      clamp(3.25rem,5.2vw,5.5rem);
+    left:5%;
+    top:12%;
 
-    line-height:1.02;
+    max-width:620px;
 
-    text-align:left;
+    font-size:clamp(
+      3rem,
+      4.4vw,
+      4.6rem
+    );
+
+    line-height:1.08;
   }
 
   .hero__expand-copy{
-    margin-top:
-      clamp(8rem,18vh,13rem);
+    left:33.5%;
+    top:44.5%;
 
-    max-width:40rem;
+    width:600px;
+    max-width:40vw;
 
-    text-align:left;
+    font-size:clamp(
+      1rem,
+      1.35vw,
+      1.2rem
+    );
+
+    line-height:1.5;
   }
 }
 
 
 /* =====================================================
-   MOBILE — BELOW 768px
+   LARGE DESKTOP
+   ===================================================== */
+
+@media (min-width:1400px){
+
+  .hero__expand-title{
+    left:4.5%;
+    top:11%;
+
+    font-size:clamp(
+      3.5rem,
+      4vw,
+      5rem
+    );
+  }
+
+  .hero__expand-copy{
+    left:33.5%;
+    top:44%;
+
+    width:620px;
+    max-width:38vw;
+
+    font-size:1.2rem;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
    ===================================================== */
 
 @media (max-width:767px){
 
   .hero__expand{
-    align-items:flex-start;
-    justify-content:flex-start;
+    display:block;
+
+    align-items:initial;
+    justify-content:initial;
 
     text-align:left;
   }
 
   .hero__expand-content{
+    position:relative;
+
     width:100%;
     height:100%;
 
-    max-width:none;
+    display:block;
 
-    display:flex;
-    flex-direction:column;
-
-    align-items:flex-start;
-    justify-content:flex-start;
-
-    padding:
-      4rem
-      1.5rem
-      3rem;
-
-    gap:0;
-
-    text-align:left;
+    padding:0;
   }
 
 
-  /* ================================================
-     MOBILE — HEADING
-     ================================================ */
+  /* -------------------------------
+     MOBILE HEADING
+     ------------------------------- */
 
   .hero__expand-title{
-    width:100%;
+    position:absolute;
+
+    left:7%;
+    top:10%;
+
+    width:86%;
+    max-width:none;
 
     margin:0;
-    padding:0;
 
-    font-size:
-      clamp(2.35rem,11vw,3.6rem);
+    font-size:clamp(
+      2.35rem,
+      10vw,
+      3.5rem
+    );
 
-    line-height:1.02;
-
-    letter-spacing:-.025em;
+    line-height:1.04;
 
     text-align:left;
   }
 
 
-  /* ================================================
-     MOBILE — DESCRIPTION
-     ================================================ */
+  /* -------------------------------
+     MOBILE DESCRIPTION
+     ------------------------------- */
 
   .hero__expand-copy{
-    width:100%;
-    max-width:100%;
+    position:absolute;
 
-    /*
-     * Keep clear separation between heading
-     * and description on mobile.
-     */
-    margin-top:5rem;
+    left:7%;
+    top:43%;
 
-    display:flex;
-    flex-direction:column;
+    width:86%;
+    max-width:none;
+
+    margin:0;
 
     gap:1.1rem;
 
@@ -735,12 +688,7 @@ main > section{ position:relative; }
 
     text-align:left;
   }
-
-  .hero__expand-copy p{
-    margin:0;
-  }
 }
-
 /* =====================================================
    2. ABOUT
    ===================================================== */
