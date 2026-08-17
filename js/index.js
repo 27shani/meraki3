@@ -578,6 +578,15 @@ tl.to(
   0.15
 );
 
+      /* Reveal both track cards — they start at opacity:0 in CSS. */
+      tl.to(trackBoxes, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.12,
+        ease: 'power2.out'
+      }, 0.3);
+
       tl.to(content, {
         y: function () {
           var overflow = content.scrollHeight - window.innerHeight;
