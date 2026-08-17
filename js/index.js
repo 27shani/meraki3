@@ -587,6 +587,23 @@ tl.to(
         ease: 'power2.out'
       }, 0.3);
 
+      /* Reveal the prize cards after the track cards.
+         They were previously left at CSS opacity:0 with no timeline tween. */
+      tl.to(prizesWrap, {
+        opacity: 1,
+        duration: 0.45,
+        ease: 'power2.out'
+      }, 1.05);
+
+      tl.to(prizeBoxes, {
+        opacity: 1,
+        y: 0,
+        filter: 'blur(0px)',
+        duration: 0.65,
+        stagger: 0.08,
+        ease: 'power2.out'
+      }, 1.12);
+
       tl.to(content, {
         y: function () {
           var overflow = content.scrollHeight - window.innerHeight;
