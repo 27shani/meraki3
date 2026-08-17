@@ -448,47 +448,45 @@ main > section{ position:relative; }
 
 
 /* =====================================================
-   HEADING
+   EXPANDED HERO — HEADING
    ===================================================== */
 
 .hero__expand-title{
   position:absolute;
 
-  /*
-   * Reference:
-   * approximately 5% from the left
-   * approximately 12% from the top
-   */
   left:5%;
   top:12%;
 
-  width:auto;
-  max-width:620px;
+  /*
+   * Wide enough to keep:
+   *
+   * Your idea. Your stage.
+   *
+   * on ONE line.
+   */
+  width:90%;
+  max-width:none;
 
   margin:0;
   padding:0;
 
   font-family:var(--font-serif);
-
   font-style:normal;
   font-weight:400;
 
-  /*
-   * Reference heading size.
-   */
-  font-size:clamp(3rem,4.4vw,4.6rem);
+  font-size:clamp(3rem,4.2vw,4.8rem);
 
-  line-height:1.08;
-
+  line-height:1.05;
   letter-spacing:-.025em;
 
   text-align:left;
+
+  white-space:normal;
 }
 
 .hero__expand-title .grad{
   font-style:italic;
 }
-
 
 /* =====================================================
    DESCRIPTION
@@ -553,15 +551,13 @@ main > section{ position:relative; }
     left:5%;
     top:12%;
 
-    max-width:620px;
+    width:90%;
+    max-width:none;
 
-    font-size:clamp(
-      3rem,
-      4.4vw,
-      4.6rem
-    );
+    font-size:clamp(3rem,4.2vw,4.8rem);
+    line-height:1.05;
 
-    line-height:1.08;
+    text-align:left;
   }
 
   .hero__expand-copy{
