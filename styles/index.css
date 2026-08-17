@@ -2707,3 +2707,129 @@ p{font-size:var(--type-body); line-height:1.55; font-weight:400;}
 
 /* Keep body from clipping the intentionally entering About cards vertically */
 main{overflow:visible;}
+
+/* =====================================================
+   FINAL FIX — TRACK CARDS + ABOUT HEADING
+   ===================================================== */
+
+/* Track cards: shorter, centered as a group, readable footer */
+.tracks__wrapper-outer{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:calc(100svh - 9rem);
+  margin:0 auto;
+}
+
+.tracks__wrapper{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:1.25rem;
+}
+
+.tracks__card{
+  width:min(500px,40vw) !important;
+  height:400px !important;
+  flex:0 0 auto;
+  opacity:0;
+}
+
+.tracks__card-inner{
+  width:100%;
+  height:400px !important;
+  min-height:400px !important;
+  padding:2rem !important;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.tracks__card-footer ul{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:.4rem !important;
+  margin-top:.55rem !important;
+}
+
+.tracks__card-footer li{
+  display:block;
+  width:100%;
+  padding-left:1rem;
+  line-height:1.35;
+}
+
+/* About: give italic/gradient A-Game? enough vertical glyph room. */
+.about__heading{
+  overflow:visible !important;
+}
+
+.about__heading > div{
+  overflow:visible !important;
+  line-height:1.18 !important;
+  padding:0 .12em .14em 0;
+}
+
+.about__heading .word-reveal,
+.about__heading .word{
+  overflow:visible !important;
+}
+
+.about__heading .word{
+  display:inline-block;
+  line-height:1.18 !important;
+  padding:0 .08em .08em 0;
+}
+
+@media (min-width:768px){
+  .tracks__wrapper-outer{
+    min-height:calc(100svh - 10rem);
+  }
+
+  .tracks__card{
+    width:min(500px,40vw) !important;
+    height:400px !important;
+  }
+
+  .tracks__card-inner{
+    height:400px !important;
+    min-height:400px !important;
+  }
+}
+
+@media (max-width:767px){
+  .tracks__wrapper-outer{
+    min-height:calc(100svh - 8rem);
+    align-items:center;
+  }
+
+  .tracks__wrapper{
+    width:max-content;
+    justify-content:flex-start;
+    align-items:center;
+    gap:1rem;
+  }
+
+  .tracks__card{
+    width:88vw !important;
+    height:420px !important;
+  }
+
+  .tracks__card-inner{
+    height:420px !important;
+    min-height:420px !important;
+    padding:1.5rem !important;
+  }
+
+  .about__heading > div{
+    line-height:1.2 !important;
+    padding-bottom:.18em;
+  }
+
+  .about__heading .word{
+    line-height:1.2 !important;
+    padding-bottom:.12em;
+  }
+}
