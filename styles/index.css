@@ -688,62 +688,402 @@ main > section{ position:relative; }
 /* =====================================================
    2. ABOUT
    ===================================================== */
+
 .about{
-  position:relative; width:100%; height:100svh;
-  background:var(--bg); overflow:hidden;
-  display:flex; flex-direction:column; justify-content:center;
+  position:relative;
+
+  width:100%;
+  min-height:100svh;
+  height:100svh;
+
+  background:var(--bg);
+
+  /*
+   * IMPORTANT:
+   * Do not clip the heading/cards at the section edges.
+   */
+  overflow:visible;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+
   padding:0 1.5rem;
-  opacity:.15; filter:blur(8px);
+
+  opacity:.15;
+  filter:blur(8px);
 }
+
+
+/* =====================================================
+   ABOUT — HEADING
+   ===================================================== */
+
 .about__heading{
-  position:relative; z-index:10; width:100%; max-width:40rem;
-  font-size:clamp(2rem,7vw,4.5rem); font-weight:400; line-height:1.05; letter-spacing:-.01em;
-  display:flex; flex-direction:column; gap:.15em;
+  position:relative;
+  z-index:10;
+
+  width:100%;
+  max-width:40rem;
+
+  margin:0;
+
+  font-size:clamp(2.5rem,7vw,4.5rem);
+
+  font-weight:400;
+
+  line-height:1.05;
+  letter-spacing:-.01em;
+
+  display:flex;
+  flex-direction:column;
+
+  gap:.08em;
+
+  /*
+   * Prevent the heading itself from clipping.
+   */
+  overflow:visible;
 }
+
+
+/* Make every animated line capable of
+   showing the complete glyphs */
+.about__heading > div{
+  overflow:visible;
+  line-height:1.05;
+}
+
+.about__heading span{
+  overflow:visible;
+}
+
+
+/* =====================================================
+   ABOUT — CARDS OUTER
+   ===================================================== */
+
 .about__boxes-outer{
-  position:relative; z-index:30; pointer-events:none;
-  margin-top:1.5rem; width:100%; overflow:hidden;
+  position:relative;
+
+  z-index:30;
+
+  pointer-events:none;
+
+  margin-top:1.5rem;
+
+  width:100%;
+
+  /*
+   * Previously this was hidden, which created
+   * the invisible wall you mentioned.
+   */
+  overflow:visible;
 }
+
+
+/* =====================================================
+   ABOUT — CARDS TRACK
+   ===================================================== */
+
 .about__boxes{
-  display:flex; flex-direction:row; justify-content:flex-start; align-items:flex-end;
-  gap:1rem; width:max-content;
+  display:flex;
+
+  flex-direction:row;
+
+  justify-content:flex-start;
+  align-items:flex-end;
+
+  gap:1rem;
+
+  width:max-content;
+
+  overflow:visible;
 }
-.about__box{ pointer-events:auto; flex-shrink:0; width:280px; transform:translateY(40px); }
+
+
+/* =====================================================
+   ABOUT — CARD
+   ===================================================== */
+
+.about__box{
+  pointer-events:auto;
+
+  flex-shrink:0;
+
+  width:280px;
+
+  transform:translateY(40px);
+
+  overflow:visible;
+}
+
 .about__box-inner{
-  height:260px; display:flex; flex-direction:column; justify-content:space-between;
-  padding:1.5rem; border-radius:20px;
-  background:rgba(255,255,255,.08); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px);
+  height:260px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  padding:1.5rem;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,.08);
+
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+
   border:1px solid rgba(255,255,255,.2);
+
   box-shadow:0 8px 32px rgba(0,0,0,.5);
-  position:relative; overflow:hidden;
+
+  position:relative;
+
+  /*
+   * Keep card content clean, but don't create
+   * an outer clipping wall.
+   */
+  overflow:hidden;
+
   transition:transform .5s ease;
 }
+
 .about__box-inner::before{
-  content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
-  background:linear-gradient(to bottom right, rgba(251,87,95,.1), transparent, rgba(143,83,252,.1));
+  content:'';
+
+  position:absolute;
+  inset:0;
+
+  border-radius:inherit;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      to bottom right,
+      rgba(251,87,95,.1),
+      transparent,
+      rgba(143,83,252,.1)
+    );
 }
-.about__box:hover .about__box-inner{ transform:translateY(-8px); }
-.about__box-step{ font-size:10px; font-weight:500; letter-spacing:.14em; color:var(--coral-light); text-transform:uppercase; position:relative; z-index:1; }
-.about__box-title{ font-family:var(--font-serif); font-style:italic; font-size:1.5rem; margin-top:.75rem; line-height:1.2; position:relative; z-index:1; }
-.about__box-desc{ font-size:13px; color:var(--neutral-300); font-weight:300; line-height:1.6; position:relative; z-index:1; }
+
+.about__box:hover .about__box-inner{
+  transform:translateY(-8px);
+}
+
+.about__box-step{
+  font-size:10px;
+
+  font-weight:500;
+
+  letter-spacing:.14em;
+
+  color:var(--coral-light);
+
+  text-transform:uppercase;
+
+  position:relative;
+  z-index:1;
+}
+
+.about__box-title{
+  font-family:var(--font-serif);
+
+  font-style:italic;
+
+  font-size:1.5rem;
+
+  margin-top:.75rem;
+
+  line-height:1.2;
+
+  position:relative;
+  z-index:1;
+}
+
+.about__box-desc{
+  font-size:13px;
+
+  color:var(--neutral-300);
+
+  font-weight:300;
+
+  line-height:1.6;
+
+  position:relative;
+  z-index:1;
+}
+
+
+/* =====================================================
+   ABOUT — IMAGE
+   ===================================================== */
 
 .about__image{
-  position:absolute; right:0; top:0; height:100%; width:65vw; min-width:320px;
-  border-radius:120px 0 0 120px; overflow:hidden; background:#111; z-index:0; pointer-events:none;
-  filter:blur(12px) brightness(.6); opacity:.3;
-}
-.about__image img{ width:100%; height:100%; object-fit:cover; }
-.about__image-shade{
-  position:absolute; inset:0;
-  background:linear-gradient(to left, transparent, rgba(0,0,0,.2), #000);
+  position:absolute;
+
+  right:0;
+  top:0;
+
+  height:100%;
+  width:65vw;
+
+  min-width:320px;
+
+  border-radius:120px 0 0 120px;
+
+  overflow:hidden;
+
+  background:#111;
+
+  z-index:0;
+
+  pointer-events:none;
+
+  filter:blur(12px) brightness(.6);
+
+  opacity:.3;
 }
 
+.about__image img{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+}
+
+.about__image-shade{
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(
+      to left,
+      transparent,
+      rgba(0,0,0,.2),
+      #000
+    );
+}
+
+
+/* =====================================================
+   DESKTOP
+   ===================================================== */
+
 @media (min-width:768px){
-  .about{ padding:0 4rem; }
-  .about__heading{ max-width:48rem; margin-left:5rem; font-size:clamp(2.5rem,5.5vw,4.5rem); }
-  .about__boxes-outer{ padding:0 4rem; margin-top:2rem; }
-  .about__box{ width:320px; }
-  .about__image{ width:55vw; border-radius:220px 0 0 220px; }
+
+  .about{
+    padding:0 4rem;
+
+    /*
+     * Allow animated heading/cards to move
+     * outside the nominal section bounds.
+     */
+    overflow:visible;
+  }
+
+  .about__heading{
+    max-width:48rem;
+
+    margin-left:5rem;
+
+    font-size:
+      clamp(2.5rem,5.5vw,4.5rem);
+
+    line-height:1.05;
+  }
+
+  .about__boxes-outer{
+    padding:0 4rem;
+
+    margin-top:2rem;
+
+    overflow:visible;
+  }
+
+  .about__boxes{
+    overflow:visible;
+  }
+
+  .about__box{
+    width:320px;
+  }
+
+  .about__image{
+    width:55vw;
+
+    border-radius:
+      220px 0 0 220px;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width:767px){
+
+  .about{
+    min-height:100svh;
+    height:auto;
+
+    /*
+     * Critical for preventing the heading/card
+     * reveal from being cut.
+     */
+    overflow:visible;
+
+    padding:
+      4rem
+      1.5rem
+      5rem;
+
+    justify-content:flex-start;
+  }
+
+  .about__heading{
+    width:100%;
+    max-width:none;
+
+    margin:0;
+
+    font-size:
+      clamp(2.5rem,10vw,4rem);
+
+    line-height:1.05;
+
+    overflow:visible;
+  }
+
+  .about__heading > div{
+    overflow:visible;
+  }
+
+  .about__boxes-outer{
+    width:100%;
+
+    margin-top:2rem;
+
+    overflow:visible;
+  }
+
+  .about__boxes{
+    overflow:visible;
+  }
+
+  .about__box{
+    width:280px;
+  }
+
+  .about__image{
+    width:85vw;
+    min-width:260px;
+
+    border-radius:
+      100px 0 0 100px;
+  }
 }
 
 /* =====================================================
@@ -879,59 +1219,555 @@ main > section{ position:relative; }
 /* =====================================================
    5. TRACKS
    ===================================================== */
-.tracks{
-  position:relative; width:100%; height:100svh; background:var(--bg); overflow:hidden;
-  display:flex; flex-direction:column; justify-content:flex-start;
-  padding:2.5rem 1rem 0; opacity:.15; filter:blur(8px);
-}
-.tracks__content{ width:100%; display:flex; flex-direction:column; }
-.tracks__title{ max-width:80rem; margin:0 auto; width:100%; margin-bottom:1rem; overflow:visible; padding:.5rem 0; clip-path:inset(0 0 100% 0); opacity:0; }
-.tracks__title h2{ font-size:clamp(1.5rem,6vw,3.5rem); font-weight:500; letter-spacing:-.02em; line-height:1.3; }
-.tracks__wrapper-outer{ max-width:80rem; margin:0 auto; width:100%; overflow:visible; z-index:20; margin-bottom:1.5rem; }
-.tracks__wrapper{ display:flex; flex-direction:row; align-items:stretch; gap:1rem; width:max-content; }
-.tracks__card{ width:88vw; flex-shrink:0; display:flex; opacity:0; }
-.tracks__card-inner{
-  width:100%; display:flex; flex-direction:column; justify-content:space-between;
-  padding:1.5rem; border-radius:16px;
-  background:rgba(255,255,255,.04); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,.1); box-shadow:0 25px 60px rgba(0,0,0,.4);
-  position:relative; overflow:hidden; transition:border-color .5s ease, transform .5s ease, box-shadow .5s ease;
-}
-.tracks__card-inner:hover{ border-color:rgba(251,87,95,.4); transform:translateY(-8px); box-shadow:0 20px 60px rgba(251,87,95,.12); }
-.tracks__card-top{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; position:relative; z-index:1; }
-.tracks__num{ font-size:10px; font-weight:600; letter-spacing:.14em; color:var(--coral); text-transform:uppercase; }
-.tracks__num-label{ font-size:1.125rem; color:var(--neutral-400); font-weight:300; }
-.tracks__card-body{ display:flex; flex-direction:column; gap:.5rem; flex-grow:1; position:relative; z-index:1; }
-.tracks__card-body h3{ font-size:1.35rem; line-height:1.2; }
-.tracks__subtitle{ font-size:13px; color:var(--neutral-300); font-weight:500; line-height:1.5; }
-.tracks__desc{ font-size:13px; color:var(--neutral-400); font-weight:300; line-height:1.6; padding-top:.75rem; border-top:1px solid rgba(255,255,255,.1); }
-.tracks__card-footer{ position:relative; z-index:1; padding-top:.75rem; border-top:1px solid rgba(255,255,255,.1); font-size:11px; color:var(--neutral-400); margin-top:1rem; }
-.tracks__card-footer span{ color:var(--coral); font-weight:600; text-transform:uppercase; letter-spacing:.08em; display:block; margin-bottom:.25rem; }
-.tracks__card-footer p{ line-height:1.5; }
 
-.tracks__prizes{ max-width:80rem; margin:0 auto; width:100%; opacity:0; padding-bottom:5rem; }
-.tracks__prizes h3{ font-size:1.5rem; text-align:center; margin-bottom:1.5rem; }
-.tracks__prizes-grid{ display:grid; grid-template-columns:1fr; gap:.75rem; }
-.tracks__prize{
-  background:rgba(255,255,255,.04); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:1.25rem;
-  display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center;
-  box-shadow:0 20px 40px rgba(0,0,0,.3); transition:border-color .4s ease, transform .4s ease;
-  opacity:0; transform:translateY(70px); filter:blur(6px);
+.tracks{
+  position:relative;
+  width:100%;
+  height:100svh;
+
+  background:var(--bg);
+  overflow:hidden;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+
+  padding:2.5rem 1rem 0;
+
+  opacity:.15;
+  filter:blur(8px);
 }
-.tracks__prize:hover{ border-color:rgba(251,87,95,.3); transform:translateY(-4px); }
-.tracks__prize h4{ font-size:1.25rem; margin-bottom:.25rem; }
-.tracks__prize-amt{ font-size:1rem; color:var(--neutral-300); font-weight:500; }
-.tracks__prize-note{ font-size:12px; color:var(--neutral-400); font-weight:300; margin-top:.15rem; }
+
+.tracks__content{
+  width:100%;
+
+  display:flex;
+  flex-direction:column;
+}
+
+
+/* =====================================================
+   TITLE
+   ===================================================== */
+
+.tracks__title{
+  max-width:80rem;
+
+  margin:0 auto 1rem;
+
+  width:100%;
+
+  overflow:visible;
+
+  padding:.5rem 0;
+
+  clip-path:inset(0 0 100% 0);
+
+  opacity:0;
+}
+
+.tracks__title h2{
+  font-size:clamp(1.5rem,6vw,3.5rem);
+
+  font-weight:500;
+
+  letter-spacing:-.02em;
+
+  line-height:1.3;
+
+  margin:0;
+}
+
+
+/* =====================================================
+   CARDS WRAPPER
+   ===================================================== */
+
+.tracks__wrapper-outer{
+  max-width:80rem;
+
+  margin:0 auto;
+
+  width:100%;
+
+  overflow:visible;
+
+  z-index:20;
+
+  margin-bottom:1.5rem;
+}
+
+.tracks__wrapper{
+  display:flex;
+
+  flex-direction:row;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:1rem;
+
+  width:100%;
+}
+
+
+/* =====================================================
+   CARD
+   ===================================================== */
+
+.tracks__card{
+  width:42vw;
+
+  max-width:680px;
+
+  /*
+   * IMPORTANT:
+   * Gives both cards the same compact height.
+   */
+  height:520px;
+
+  flex:0 0 auto;
+
+  display:flex;
+
+  opacity:0;
+}
+
+.tracks__card-inner{
+  width:100%;
+  height:100%;
+
+  display:flex;
+
+  flex-direction:column;
+
+  /*
+   * Keep the content distributed,
+   * but don't allow the card to grow.
+   */
+  justify-content:space-between;
+
+  padding:2.5rem;
+
+  border-radius:16px;
+
+  background:rgba(255,255,255,.04);
+
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+
+  border:1px solid rgba(255,255,255,.1);
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.4);
+
+  position:relative;
+
+  overflow:hidden;
+
+  transition:
+    border-color .5s ease,
+    transform .5s ease,
+    box-shadow .5s ease;
+
+  box-sizing:border-box;
+}
+
+.tracks__card-inner:hover{
+  border-color:rgba(251,87,95,.4);
+
+  transform:translateY(-8px);
+
+  box-shadow:
+    0 20px 60px rgba(251,87,95,.12);
+}
+
+
+/* =====================================================
+   CARD TOP
+   ===================================================== */
+
+.tracks__card-top{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-start;
+
+  margin-bottom:1rem;
+
+  position:relative;
+
+  z-index:1;
+}
+
+.tracks__num{
+  font-size:10px;
+
+  font-weight:600;
+
+  letter-spacing:.14em;
+
+  color:var(--coral);
+
+  text-transform:uppercase;
+}
+
+.tracks__num-label{
+  font-size:1.125rem;
+
+  color:var(--neutral-400);
+
+  font-weight:300;
+}
+
+
+/* =====================================================
+   CARD BODY
+   ===================================================== */
+
+.tracks__card-body{
+  display:flex;
+
+  flex-direction:column;
+
+  gap:.5rem;
+
+  /*
+   * Do NOT allow this to create unnecessary
+   * vertical stretching.
+   */
+  flex:1;
+
+  position:relative;
+
+  z-index:1;
+
+  min-height:0;
+}
+
+.tracks__card-body h3{
+  font-size:2.25rem;
+
+  line-height:1.2;
+
+  margin:0 0 .25rem;
+}
+
+.tracks__subtitle{
+  font-size:13px;
+
+  color:var(--neutral-300);
+
+  font-weight:500;
+
+  line-height:1.5;
+
+  margin:0;
+}
+
+.tracks__desc{
+  font-size:13px;
+
+  color:var(--neutral-400);
+
+  font-weight:300;
+
+  line-height:1.6;
+
+  padding-top:.75rem;
+
+  border-top:
+    1px solid rgba(255,255,255,.1);
+
+  margin-top:.25rem;
+
+  margin-bottom:0;
+}
+
+
+/* =====================================================
+   WHO CAN APPLY
+   ===================================================== */
+
+.tracks__card-footer{
+  position:relative;
+
+  z-index:1;
+
+  padding-top:1rem;
+
+  border-top:
+    1px solid rgba(255,255,255,.1);
+
+  font-size:13px;
+
+  color:var(--neutral-400);
+
+  margin-top:1rem;
+
+  flex-shrink:0;
+}
+
+.tracks__card-footer > span{
+  color:var(--coral);
+
+  font-weight:600;
+
+  text-transform:uppercase;
+
+  letter-spacing:.08em;
+
+  display:block;
+
+  margin-bottom:.75rem;
+}
+
+
+/* =====================================================
+   BULLET LIST
+   ===================================================== */
+
+.tracks__card-footer ul{
+  list-style:none;
+
+  padding:0;
+
+  margin:0;
+
+  display:grid;
+
+  grid-template-columns:repeat(2, minmax(0, 1fr));
+
+  column-gap:2rem;
+
+  row-gap:.55rem;
+}
+
+.tracks__card-footer li{
+  position:relative;
+
+  padding-left:1rem;
+
+  line-height:1.45;
+
+  color:var(--neutral-400);
+}
+
+.tracks__card-footer li::before{
+  content:'—';
+
+  position:absolute;
+
+  left:0;
+  top:0;
+
+  color:var(--coral);
+
+  font-weight:500;
+}
+
+
+/* =====================================================
+   PRIZES
+   ===================================================== */
+
+.tracks__prizes{
+  max-width:80rem;
+
+  margin:0 auto;
+
+  width:100%;
+
+  opacity:0;
+
+  padding-bottom:5rem;
+}
+
+.tracks__prizes h3{
+  font-size:1.5rem;
+
+  text-align:center;
+
+  margin-bottom:1.5rem;
+}
+
+.tracks__prizes-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:.75rem;
+}
+
+.tracks__prize{
+  background:rgba(255,255,255,.04);
+
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+
+  border:1px solid rgba(255,255,255,.1);
+
+  border-radius:16px;
+
+  padding:1.25rem;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  text-align:center;
+
+  box-shadow:
+    0 20px 40px rgba(0,0,0,.3);
+
+  transition:
+    border-color .4s ease,
+    transform .4s ease;
+
+  opacity:0;
+
+  transform:translateY(70px);
+
+  filter:blur(6px);
+}
+
+.tracks__prize:hover{
+  border-color:rgba(251,87,95,.3);
+
+  transform:translateY(-4px);
+}
+
+.tracks__prize h4{
+  font-size:1.25rem;
+
+  margin-bottom:.25rem;
+}
+
+.tracks__prize-amt{
+  font-size:1rem;
+
+  color:var(--neutral-300);
+
+  font-weight:500;
+}
+
+.tracks__prize-note{
+  font-size:12px;
+
+  color:var(--neutral-400);
+
+  font-weight:300;
+
+  margin-top:.15rem;
+}
+
+
+/* =====================================================
+   DESKTOP
+   ===================================================== */
 
 @media (min-width:768px){
-  .tracks{ padding:4rem 3rem 0; }
-  .tracks__card{ width:42vw; }
-  .tracks__card-inner{ padding:2.5rem; }
-  .tracks__card-body h3{ font-size:2.25rem; }
-  .tracks__prizes-grid{ grid-template-columns:repeat(3,1fr); }
+
+  .tracks{
+    padding:4rem 3rem 0;
+  }
+
+  .tracks__wrapper{
+    width:100%;
+
+    justify-content:center;
+
+    align-items:center;
+  }
+
+  .tracks__card{
+    width:42vw;
+
+    max-width:680px;
+
+    height:520px;
+  }
+
+  .tracks__card-inner{
+    padding:2.5rem;
+  }
+
+  .tracks__card-body h3{
+    font-size:2.25rem;
+  }
 }
 
+
+/* =====================================================
+   LARGE DESKTOP
+   ===================================================== */
+
+@media (min-width:1400px){
+
+  .tracks__card{
+    height:540px;
+  }
+
+  .tracks__card-footer ul{
+    column-gap:3rem;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width:767px){
+
+  .tracks{
+    padding:
+      2.5rem
+      1rem
+      0;
+  }
+
+  .tracks__wrapper{
+    width:max-content;
+
+    justify-content:flex-start;
+
+    align-items:stretch;
+  }
+
+  .tracks__card{
+    width:88vw;
+
+    max-width:none;
+
+    height:500px;
+  }
+
+  .tracks__card-inner{
+    padding:1.5rem;
+  }
+
+  .tracks__card-body h3{
+    font-size:1.35rem;
+  }
+
+  .tracks__card-footer ul{
+    grid-template-columns:1fr;
+
+    row-gap:.5rem;
+  }
+
+  .tracks__card-footer{
+    font-size:11px;
+  }
+}
 /* =====================================================
    6. TIMELINE (SAVE THE DATES)
    ===================================================== */
