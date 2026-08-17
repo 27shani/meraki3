@@ -624,7 +624,7 @@ tl.to(
   var rightOuter = container ? container.querySelector('.timeline__right-outer') : null;
   var rightContent = document.getElementById('timelineRight');
   var arrow = document.getElementById('timelineArrow');
-  if (!container || !rightOuter || getComputedStyle(rightOuter).display === 'none') return;
+  if (!container || !rightOuter || !rightContent) return;
 
   initCharHover(container);
 
@@ -865,8 +865,19 @@ tl.to(
       var tl = gsap.timeline({
         scrollTrigger: { trigger: container, start: 'top top', end: '+=100%', scrub: 1, pin: true }
       });
-      tl.to(circle, { scale: 25, ease: 'power2.inOut', duration: 1 }, 0);
-      tl.fromTo(content, { opacity: 0, y: 24 }, { opacity: 1, y: 0, ease: 'power2.out', duration: 0.5 }, 0.5);
+      if (circle) {
+        gsap.set(circle, { scale: 0.08, transformOrigin: 'center center' });
+        tl.to(circle, { scale: 32, ease: 'power2.inOut', duration: 1.2 }, 0);
+      }
+
+      if (content) {
+        tl.fromTo(
+          content,
+          { opacity: 0, y: 32 },
+          { opacity: 1, y: 0, ease: 'power2.out', duration: 0.6 },
+          0.55
+        );
+      }
     }, container);
   })();
 
