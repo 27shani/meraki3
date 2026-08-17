@@ -173,7 +173,7 @@
 
   tl
     // 1) Logo scales up big & fades in
-    .to(logo, { scale: 1.2, opacity: 1, duration: 0.8, ease: 'expo.out' })
+    .to(logo, { scale: 0.78, opacity: 1, duration: 0.8, ease: 'expo.out' })
 
     // 2) Red wipe slides UP (from 100% to 0%)
     .to(wipeRed, { y: '0%', duration: 0.6, ease: 'power3.inOut' }, '+=0.2')
@@ -579,7 +579,7 @@
   var rightOuter = container ? container.querySelector('.timeline__right-outer') : null;
   var rightContent = document.getElementById('timelineRight');
   var arrow = document.getElementById('timelineArrow');
-  if (!container) return;
+  if (!container || !rightOuter || getComputedStyle(rightOuter).display === 'none') return;
 
   initCharHover(container);
 
@@ -832,9 +832,9 @@
     var footerEl = document.getElementById('siteFooter');
     if (!footerEl) return;
 
-    var daysEl = document.getElementById('footerDays');
-    var hoursEl = document.getElementById('footerHours');
-    var minutesEl = document.getElementById('footerMinutes');
+    var daysEl = document.getElementById('contactDays');
+    var hoursEl = document.getElementById('contactHours');
+    var minutesEl = document.getElementById('contactMinutes');
 
     function updateCountdown() {
       var target = new Date('2026-10-23T00:00:00+05:30').getTime();
@@ -857,15 +857,12 @@
     gsap.context(function () {
       gsap.set(footerEl, { opacity: 0, y: 60 });
 
-      var countdown = footerEl.querySelector('.site-footer__countdown');
-      var applyBtn = footerEl.querySelector('.site-footer__apply');
       var contact = footerEl.querySelector('.site-footer__contact');
       var brandLogo = footerEl.querySelector('.site-footer__brand-logo');
-      var powered = footerEl.querySelector('.site-footer__powered');
-      var brandYear = footerEl.querySelector('.site-footer__brand-year');
+      var poweredWrap = footerEl.querySelector('.site-footer__powered-wrap');
       var instagram = footerEl.querySelector('.site-footer__instagram');
 
-      var targets = [countdown, applyBtn, contact, brandLogo, brandYear, powered, instagram].filter(Boolean);
+      var targets = [contact, brandLogo, poweredWrap, instagram].filter(Boolean);
 
       if (targets.length) {
         gsap.set(targets, { opacity: 0, y: 24 });
@@ -888,12 +885,9 @@
         duration: 1
       }, 0);
 
-      if (countdown) tl.to(countdown, { opacity: 1, y: 0, duration: .75, ease: 'power3.out' }, .05);
-      if (applyBtn) tl.to(applyBtn, { opacity: 1, y: 0, duration: .65, ease: 'power3.out' }, .12);
-      if (contact) tl.to(contact, { opacity: 1, y: 0, duration: .75, ease: 'power3.out' }, .18);
+      if (contact) tl.to(contact, { opacity: 1, y: 0, duration: .75, ease: 'power3.out' }, .12);
+      if (poweredWrap) tl.to(poweredWrap, { opacity: 1, y: 0, duration: .7, ease: 'power3.out' }, .18);
       if (brandLogo) tl.to(brandLogo, { opacity: 1, y: 0, duration: .9, ease: 'power3.out' }, .2);
-      if (brandYear) tl.to(brandYear, { opacity: 1, y: 0, duration: .85, ease: 'power3.out' }, .22);
-      if (powered) tl.to(powered, { opacity: 1, y: 0, duration: .55, ease: 'power3.out' }, .25);
       if (instagram) tl.to(instagram, { opacity: 1, y: 0, duration: .55, ease: 'power3.out' }, .3);
     }, footerEl);
   })();
